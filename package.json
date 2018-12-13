@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.375.0",
     "cheerio": "^1.0.0-rc.2",
     "dotenv": "=4.0.0",
     "ffmpeg-static": "^2.4.0",
