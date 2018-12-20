@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    podbooster
+
+    Sample SAM Template for podbooster
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+    Function:
+        Timeout: 900
+
+
+Resources:
+
+    PodboosterFunction:
+        Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+        Properties:
+            CodeUri: podbooster/
+            Handler: app.lambdaHandler
+            Runtime: nodejs8.10
+            Timeout: 900
+            Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+                Variables:
+                    PARAM1: VALUE
+            Events:
+                Podbooster:
+                    Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+                    Properties:
+                        Path: /podbooster
+                        Method: get
+
+Outputs:
+
+    PodboosterApi:
+      Description: "API Gateway endpoint URL for Prod stage for Podbooster function"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/podbooster/"
+
+    PodboosterFunction:
+      Description: "Podbooster Lambda Function ARN"
+      Value: !GetAtt PodboosterFunction.Arn
+
+    PodboosterFunctionIamRole:
+      Description: "Implicit IAM Role created for Podbooster function"
+      Value: !GetAtt PodboosterFunctionRole.Arn
