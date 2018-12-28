@@ -1,0 +1,7 @@
+.aws-sam
+*.zip
+*.log
+publish.sh
+**/node_modules
+*/tests
+yarn.lock

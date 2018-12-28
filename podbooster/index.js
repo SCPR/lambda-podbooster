@@ -2,9 +2,6 @@
 
 require('dotenv').config();
 
-const podboost   = require('./podboost');
-const async = require('async');
-
 const getPodcast    = require('./lib/get-podcast');
 const uploadAudio = require('./lib/upload-audio');
 const uploadXML      = require('./lib/upload-xml');
@@ -44,7 +41,7 @@ const uploadXML      = require('./lib/upload-xml');
  *
  */
 
-exports.lambdaHandler = (event, context, callback) => {
+exports.handler = (event, context, callback) => {
     return getPodcast()
         .then(uploadAudio)
         .then(uploadXML)
