@@ -8,7 +8,7 @@ const request = require('request');
 module.exports = () => {
   return new Promise((resolve, reject) => {
     const feedUrl = process.env.FEED_URL;
-    request(feedUrl, async (error, response, body) => {
+    request(feedUrl, (error, response, body) => {
         if (error) {
             reject(error);
         }
@@ -26,13 +26,15 @@ module.exports = () => {
 
             // Check which audio files we need to download and which files we need to delete.
             // Store the xml data for later use.
-            const podcastData = await getAudioCollections(audioFiles);
-            podcastData.xmlBody = body;
+            getAudioCollections(audioFiles)
+                .then(podcastData => {
+                    podcastData.xmlBody = body;
 
-            console.log(`Received ${podcastData.inclusionList.length} audio file[s]`);
-            console.time('Total Time');
+                    console.log(`Retrieving ${podcastData.inclusionList.length} audio file[s]`);
 
-            resolve(podcastData);
+                    resolve(podcastData);
+                })
+                .catch(err => reject(err));
         }
     });
   });
