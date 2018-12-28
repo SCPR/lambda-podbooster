@@ -6,11 +6,6 @@ Description: >
     Sample SAM Template for podbooster
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
-Globals:
-    Function:
-        Timeout: 900
-
-
 Resources:
 
     PodboosterFunction:
@@ -19,6 +14,7 @@ Resources:
             CodeUri: podbooster/
             Handler: app.lambdaHandler
             Runtime: nodejs8.10
+            MemorySize: 512
             Timeout: 900
             Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
                 Variables:
