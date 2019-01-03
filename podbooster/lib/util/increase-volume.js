@@ -1,6 +1,7 @@
 'use strict';
 
 const lame = require('lame');
+const mm = require('music-metadata');
 const request = require('request');
 const uploadToS3 = require('./upload-to-s3');
 const volume = require('pcm-volume');
@@ -15,7 +16,7 @@ const volume = require('pcm-volume');
 // TODO: Figure out a way to get the sample rate and continue processing with the same stream.
 
 module.exports = (audioInput) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         const audio = audioInput || {};
         const newVolume = parseFloat(process.env.VOLUME) || 1.8;
         let volumeStream = new volume();
