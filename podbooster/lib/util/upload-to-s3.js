@@ -1,6 +1,5 @@
 'use strict';
 
-const progress = require('progress-stream');
 const s3 = require('./s3');
 
 module.exports = (body, filename) => {
@@ -9,12 +8,6 @@ module.exports = (body, filename) => {
             Body: body,
             Bucket: process.env.S3_BUCKET,
             Key: process.env.S3_PREFIX + filename,
-        }
-
-        if (body.pipe) {
-            const progressStream = progress({ time: 1 });
-            progressStream.on('progress', (progress) => console.log(`Uploaded ${progress.transferred} bytes for ${filename}`));
-            body.pipe(progressStream);
         }
 
         console.log(`Processing ${filename}`)
