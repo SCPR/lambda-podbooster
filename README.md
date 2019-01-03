@@ -6,7 +6,7 @@ Here's a basic breadown of the folder structure for this repo:
 .
 ├── README.md                   <-- This instructions file
 ├── podbooster                  <-- Source code for a lambda function
-│   ├── index.js                  <-- Lambda function code
+│   ├── index.js                <-- Lambda function code
 │   ├── package.json            <-- NodeJS dependencies
 │   └── tests                   <-- Unit tests
 │       └── unit
