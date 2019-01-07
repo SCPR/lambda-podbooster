@@ -11,9 +11,9 @@ exports.handler = (event, context, callback) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
     // Write to stdout to keep the event loop occupied.
-    setInterval(() => {
-        process.stdout.write('.');
-    }, 1000);
+    setTimeout(() => {
+        console.log('Process Timed out.');
+    }, 900000);
 
     getPodcast()
         .then(uploadAudio)

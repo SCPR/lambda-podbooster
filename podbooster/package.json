@@ -11,8 +11,8 @@
     "cheerio": "^1.0.0-rc.2",
     "dotenv": "^6.2.0",
     "lame": "^1.2.4",
-    "music-metadata": "^3.4.1",
     "pcm-volume": "^1.0.0",
+    "progress-stream": "^2.0.0",
     "request": "^2.88.0"
   },
   "scripts": {

@@ -1,13 +1,21 @@
 'use strict';
 
+const progress = require('progress-stream');
 const s3 = require('./s3');
 
 module.exports = (body, filename) => {
     return new Promise(async (resolve, reject) => {
-        const params = {
+        let params = {
             Body: body,
             Bucket: process.env.S3_BUCKET,
             Key: process.env.S3_PREFIX + filename,
+        }
+
+        if (body.pipe) {
+            const progressStream = progress();
+            progressStream.on('progress', (progress) => console.log(`${filename}: ${progress.transferred} bytes transferred`));
+            body.pipe(progressStream)
+            params.Body = progressStream;
         }
 
         console.log(`Processing ${filename}`)
