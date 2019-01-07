@@ -12,7 +12,7 @@ exports.handler = (event, context, callback) => {
 
     // Write to stdout to keep the event loop occupied.
     setTimeout(() => {
-        console.log('Process Timed out.');
+        console.log('.');
     }, 900000);
 
     getPodcast()
