@@ -14,7 +14,7 @@ module.exports = (body, filename) => {
         if (body.pipe) {
             const progressStream = progress();
             progressStream.on('progress', () => {});
-            body.pipe(progressStream)
+            body.pipe(progressStream);
             params.Body = progressStream;
         }
 

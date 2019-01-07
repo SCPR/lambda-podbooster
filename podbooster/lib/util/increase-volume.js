@@ -22,8 +22,6 @@ module.exports = (audioInput) => {
         originalStream.pipe(decoder);
 
         decoder.on('format', (format) => {
-            console.log("Format is known:", format);
-
             // Decode the mp3 to pcm, apply the new volume, encode back to mp3
             // with the correct sample rate
             const encoder = new lame.Encoder({
