@@ -13,7 +13,7 @@ module.exports = (body, filename) => {
 
         if (body.pipe) {
             const progressStream = progress();
-            progressStream.on('progress', (progress) => console.log(`${filename}: ${progress.transferred} bytes transferred`));
+            progressStream.on('progress', () => {});
             body.pipe(progressStream)
             params.Body = progressStream;
         }
