@@ -5,3 +5,4 @@ publish.sh
 **/node_modules
 */tests
 yarn.lock
+.env

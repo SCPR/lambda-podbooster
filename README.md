@@ -1,6 +1,6 @@
 # lambda-podbooster
 
-Here's a basic breadown of the folder structure for this repo:
+Here's a basic breakdown of the folder structure for this repo:
 
 ```bash
 .
